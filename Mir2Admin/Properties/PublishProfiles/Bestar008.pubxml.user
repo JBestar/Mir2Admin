@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\IISSever\Mir2Admin</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>05/10/2026 22:15:42</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>05/10/2026 22:15:42</publishTime>
+    </File>
+    <File Include="bin/Ionic.Zip.Reduced.dll">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="bin/LM2Admin.dll">
+      <publishTime>05/04/2021 00:05:37</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/Mir2Admin.dll">
+      <publishTime>05/10/2026 22:15:36</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/images/icon_bullet.gif">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/images/login_staff.png">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/scripts/calendar.js">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/scripts/datepicker-ko.js">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/scripts/jquery-ui.js">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/scripts/jquery-ui.min.js">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/scripts/jquery.js">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/scripts/jscolor.js">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/scripts/jscolor.min.js">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/bootstrap.css">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/bootstrap.min.css">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/images/ui-icons_444444_256x240.png">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/images/ui-icons_555555_256x240.png">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/images/ui-icons_777620_256x240.png">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/images/ui-icons_777777_256x240.png">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/images/ui-icons_cc0000_256x240.png">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/images/ui-icons_ffffff_256x240.png">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/jquery-ui.css">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/login.css">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Contents/styles/site.css">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>03/05/2020 16:26:35</publishTime>
+    </File>
+    <File Include="Include/AppStaff.Master">
+      <publishTime>02/10/2022 18:11:00</publishTime>
+    </File>
+    <File Include="Include/MenuEmployee.ascx">
+      <publishTime>06/15/2021 22:06:48</publishTime>
+    </File>
+    <File Include="Include/MenuLm2.ascx">
+      <publishTime>06/15/2021 22:06:44</publishTime>
+    </File>
+    <File Include="Include/MenuUpdate.ascx">
+      <publishTime>06/15/2021 22:06:52</publishTime>
+    </File>
+    <File Include="Index.aspx">
+      <publishTime>05/21/2021 22:30:25</publishTime>
+    </File>
+    <File Include="LM2/ActiveKeep.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/BlackList.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/CharacList.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/connection.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/GetNotice.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/Login.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/LogOut.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/member.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/memberEdit.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/memberMulti.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/notice.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/Setting.aspx">
+      <publishTime>03/03/2021 11:38:45</publishTime>
+    </File>
+    <File Include="LM2/transfer.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="LM2/UserManage.aspx">
+      <publishTime>01/07/2021 13:55:53</publishTime>
+    </File>
+    <File Include="Mir2/ActiveKeep.aspx">
+      <publishTime>06/26/2021 11:57:50</publishTime>
+    </File>
+    <File Include="Mir2/BlackList.aspx">
+      <publishTime>06/15/2021 22:07:36</publishTime>
+    </File>
+    <File Include="Mir2/CharacList.aspx">
+      <publishTime>06/15/2021 22:07:40</publishTime>
+    </File>
+    <File Include="Mir2/connection.aspx">
+      <publishTime>06/15/2021 22:07:48</publishTime>
+    </File>
+    <File Include="Mir2/GetNotice.aspx">
+      <publishTime>06/15/2021 22:10:57</publishTime>
+    </File>
+    <File Include="Mir2/Login.aspx">
+      <publishTime>06/15/2021 22:11:00</publishTime>
+    </File>
+    <File Include="Mir2/LogOut.aspx">
+      <publishTime>06/15/2021 22:11:05</publishTime>
+    </File>
+    <File Include="Mir2/member.aspx">
+      <publishTime>02/10/2022 21:11:49</publishTime>
+    </File>
+    <File Include="Mir2/memberEdit.aspx">
+      <publishTime>06/15/2021 22:11:15</publishTime>
+    </File>
+    <File Include="Mir2/memberMulti.aspx">
+      <publishTime>06/15/2021 22:11:20</publishTime>
+    </File>
+    <File Include="Mir2/notice.aspx">
+      <publishTime>06/15/2021 22:11:26</publishTime>
+    </File>
+    <File Include="Mir2/Setting.aspx">
+      <publishTime>06/15/2021 22:11:31</publishTime>
+    </File>
+    <File Include="Mir2/transfer.aspx">
+      <publishTime>06/15/2021 22:11:36</publishTime>
+    </File>
+    <File Include="Mir2/UserManage.aspx">
+      <publishTime>06/15/2021 22:11:40</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>05/10/2026 22:15:37</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.js">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.min.js">
+      <publishTime>01/07/2021 12:55:53</publishTime>
+    </File>
+    <File Include="Staff/agency.aspx">
+      <publishTime>06/15/2021 22:12:21</publishTime>
+    </File>
+    <File Include="Staff/agencyEdit.aspx">
+      <publishTime>06/15/2021 22:12:32</publishTime>
+    </File>
+    <File Include="Staff/company.aspx">
+      <publishTime>06/15/2021 22:12:37</publishTime>
+    </File>
+    <File Include="Staff/companyEdit.aspx">
+      <publishTime>06/15/2021 22:12:43</publishTime>
+    </File>
+    <File Include="Staff/employee.aspx">
+      <publishTime>06/15/2021 22:12:47</publishTime>
+    </File>
+    <File Include="Staff/employeeEdit.aspx">
+      <publishTime>06/15/2021 22:12:52</publishTime>
+    </File>
+    <File Include="Staff/password.aspx">
+      <publishTime>06/15/2021 22:12:56</publishTime>
+    </File>
+    <File Include="Update/download.aspx">
+      <publishTime>06/26/2021 11:53:22</publishTime>
+    </File>
+    <File Include="Update/history.aspx">
+      <publishTime>06/26/2021 11:53:05</publishTime>
+    </File>
+    <File Include="Update/update.aspx">
+      <publishTime>06/26/2021 11:53:49</publishTime>
+    </File>
+    <File Include="Update/version.aspx">
+      <publishTime>06/26/2021 11:54:14</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>06/26/2021 11:59:20</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/10/2026 22:15:36</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

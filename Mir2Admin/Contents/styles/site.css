@@ -1,0 +1,234 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/*
+input,
+select,
+textarea {
+    max-width: 580px;
+}*/
+
+li, .nav li {
+    font-size: 16px;
+}
+
+.nav li:hover {
+    opacity:0.8;
+    /*color: #929292;*/
+}
+
+a, td {
+    font-family: Arial sans-serif;
+
+}
+
+/*Menu CSS*/
+.td-menu{
+    height:30px; 
+    vertical-align:middle; 
+    margin-left:20px; 
+    font-size: 14pt;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    color:#244786; 
+    font-weight:bold;
+}
+.table-menu {
+    column-span:none;
+    margin-top:20px;
+    padding: 20px 10px;
+    border: 0;
+    border-color: gray;
+    width: 100%;
+}
+.div-menu{
+    
+}
+
+.btn-menu{
+    font-size: 15px;   
+    font-weight:bold;
+}
+
+/* Change the link color on hover */
+.div-menu a:hover {
+  color: #000000;
+  
+}
+
+.table-content {
+    width:100%; 
+    margin-bottom :10px;
+}
+
+.td-content-right {
+    /*
+    margin-left:100px;
+    */
+    position: fixed;  
+    right:30px;
+   
+}
+
+.div-column-no {        /*번호*/
+    text-align:center; 
+    margin-left:5px; 
+    width:40px;
+}
+
+.div-column-id {        /*아이디*/
+    text-align:center; 
+    margin-left:5px; 
+    width:100px;
+}
+
+.div-column-company {   /*본사명*/
+    text-align:center; 
+    margin-left:5px; 
+    width:100px;
+}
+
+.div-column-nickname {  /*닉네임*/
+    text-align:left; 
+    margin-left:5px; 
+    width:200px;
+}
+
+.div-column-date {        /*등록일, 접속일*/
+    text-align:center; 
+    margin-left:5px; 
+    width:100px;
+}
+
+.div-column-stop {        /*차단*/
+    text-align:center; 
+    margin-left:5px; 
+    width:60px;
+}
+
+.div-column-modify {        /*수정, 삭제*/
+    text-align:center; 
+    margin-left:5px; 
+    width:120px;
+}
+
+.div-column-game {        /*게임들상태*/
+    text-align:left; 
+    margin-left:10px; 
+    width:100%;
+}
+
+
+.link-button {
+    Width:100px;
+    Height:100%;
+    Font-Size:14px; 
+}
+
+.link-button:hover {
+    background-color:gray;
+}
+
+.table-edit {
+    position:relative;
+    border:0px #dedede solid;
+    border:0 ;
+    padding:0;
+    width:100%;
+}
+
+.td-edit1{
+    height:50px;
+    vertical-align:middle;
+    width:50px;
+}
+
+.tr-edit{                      /**/
+    padding:20px 5px;
+    margin-bottom:10px;
+}
+
+.menu-bgcolor{
+    background-color:#e3e3e3;
+}
+
+.normal_box th {
+    height: 30px;
+    
+    padding-top: 3px;
+    /*
+    padding-left:20px;
+    margin : 0 auto;
+    
+    */
+    align-self:center;
+    align-content:center;  
+    background: #506EA5;
+    color: white;
+    border-color: black;
+    font-size:14px;
+    text-align:center;    
+}
+
+/*
+.normal_box_th {
+    height: 30px;
+    
+    padding-top: 3px;
+    background: #506EA5;
+    color: white;
+    border-color: black;
+    font-size:14px;
+
+    text-align:center;
+    align-content:center;
+}
+
+.normal_box th{
+    height:30px;
+    padding-top:3px;
+    background:#506EA5;
+    color:white;
+    border-color:white;
+    text-align:center;
+}
+.normal_box .write_head{
+    padding:3px;
+    background:#A0AAB9;
+    letter-spacing:0px;
+    color:white;
+
+}
+*/
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
