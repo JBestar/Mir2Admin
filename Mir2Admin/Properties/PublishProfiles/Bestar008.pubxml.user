@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\IISSever\Mir2Admin</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\Tansfer\01_AppAdmin\Sources\Mir2Admin\publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/07/2021 12:55:53</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>05/10/2026 22:15:42</publishTime>
+      <publishTime>05/10/2026 22:29:31</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>05/10/2026 22:15:42</publishTime>
+      <publishTime>05/10/2026 22:29:31</publishTime>
     </File>
     <File Include="bin/Ionic.Zip.Reduced.dll">
       <publishTime>01/07/2021 13:55:53</publishTime>
@@ -55,7 +55,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/07/2021 12:55:53</publishTime>
     </File>
     <File Include="bin/Mir2Admin.dll">
-      <publishTime>05/10/2026 22:15:36</publishTime>
+      <publishTime>05/10/2026 22:22:24</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>01/07/2021 12:55:53</publishTime>
@@ -289,7 +289,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/07/2021 12:55:53</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>05/10/2026 22:15:37</publishTime>
+      <publishTime>05/10/2026 22:29:28</publishTime>
     </File>
     <File Include="scripts/ai.0.22.9-build00167.js">
       <publishTime>01/07/2021 12:55:53</publishTime>

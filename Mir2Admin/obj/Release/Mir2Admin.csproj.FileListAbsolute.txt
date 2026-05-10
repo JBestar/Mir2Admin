@@ -159,6 +159,3 @@ d:\Tansfer\01_AppAdmin\Sources\Mir2Admin\Mir2Admin\bin\System.Web.Http.xml
 d:\Tansfer\01_AppAdmin\Sources\Mir2Admin\Mir2Admin\bin\System.Web.Http.WebHost.xml
 d:\Tansfer\01_AppAdmin\Sources\Mir2Admin\Mir2Admin\obj\Release\Mir2Admin.dll
 d:\Tansfer\01_AppAdmin\Sources\Mir2Admin\Mir2Admin\obj\Release\Mir2Admin.pdb
-d:\Tansfer\01_AppAdmin\Sources\Mir2Admin\Mir2Admin\obj\Release\Mir2Admin.csproj.AssemblyReference.cache
-d:\Tansfer\01_AppAdmin\Sources\Mir2Admin\Mir2Admin\obj\Release\Mir2Admin.csproj.CoreCompileInputs.cache
-d:\Tansfer\01_AppAdmin\Sources\Mir2Admin\Mir2Admin\obj\Release\Mir2Admin.csproj.Up2Date
