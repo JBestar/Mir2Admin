@@ -114,9 +114,7 @@
                     </td>
                 </tr>
             </table>
-            <% if (strFold != "Update") { %>
-                <asp:Timer ID="Timer1" runat="server" Interval="120000" ontick="Timer1_Tick" />
-            <%  }%>
+
         </div>
     </form>
 
