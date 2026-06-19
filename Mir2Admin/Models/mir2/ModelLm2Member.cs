@@ -113,29 +113,47 @@ namespace Mir2Admin.Models
             if (mEmployee == null) return 4;
             if (mEmployee.emp_state_active == false || mEmployee.emp_b_app_01_lm2 == false) return 4;
 
-            mSession = new CLm2Session();
-            mSession = mSession.GetSessionByUId(mb_uid);
-            if (mSession != null)
-            {
-//                if (!mSession.sess_pub_addr.Equals(ipaddress))
-//                     return 5;
-//                 else
-//                 {
-//                     mSession.DeleteSession(mSession.sess_id);
-//                 }
-                
-            }
-            mSession = new CLm2Session();
-            mSession.sess_id = sess_id;
-            mSession.sess_time_begin = DateTime.Now;
-            mSession.sess_time_last = DateTime.Now;
-            mSession.sess_hostname = hostname;
-            mSession.sess_browser = browser;
-            mSession.sess_pub_addr = ipaddress;
-            mSession.sess_mb_uid = mb_uid;
-            mSession.sess_emp_fid = tmpMember.mb_emp_fid;
+            CLm2Session sessionHelper = new CLm2Session();
+            CLm2Session existingSession = sessionHelper.GetSessionByUIdAndPubAddr(mb_uid, ipaddress);
+            bool sessionSaved = false;
 
-            if (mSession.ResigterMemberSession())
+            if (existingSession != null)
+            {
+                string oldSessId = existingSession.sess_id;
+                existingSession.sess_time_last = DateTime.Now;
+                existingSession.sess_hostname = hostname;
+                existingSession.sess_browser = browser;
+                existingSession.sess_emp_fid = tmpMember.mb_emp_fid;
+
+                if (oldSessId != sess_id)
+                {
+                    existingSession.DeleteSession(oldSessId);
+                    existingSession.sess_id = sess_id;
+                    sessionSaved = existingSession.ResigterMemberSession();
+                }
+                else
+                {
+                    sessionSaved = existingSession.UpdateMemberSession();
+                }
+
+                if (sessionSaved)
+                    sessionHelper.DeleteSessionsByUIdAndPubAddrExcept(mb_uid, ipaddress, sess_id);
+            }
+            else
+            {
+                mSession = new CLm2Session();
+                mSession.sess_id = sess_id;
+                mSession.sess_time_begin = DateTime.Now;
+                mSession.sess_time_last = DateTime.Now;
+                mSession.sess_hostname = hostname;
+                mSession.sess_browser = browser;
+                mSession.sess_pub_addr = ipaddress;
+                mSession.sess_mb_uid = mb_uid;
+                mSession.sess_emp_fid = tmpMember.mb_emp_fid;
+                sessionSaved = mSession.ResigterMemberSession();
+            }
+
+            if (sessionSaved)
             {
                 tmpMember.mb_time_last = DateTime.Now;
                 tmpMember.UpdateLastTimeMember();

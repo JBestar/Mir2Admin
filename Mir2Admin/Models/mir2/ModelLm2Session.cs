@@ -96,6 +96,14 @@ namespace Mir2Admin.Models
         {
             return tblSession.GetTblSessionByUId(sess_mb_uid);
         }
+        public CLm2Session GetSessionByUIdAndPubAddr(string sess_mb_uid, string sess_pub_addr)
+        {
+            return tblSession.GetTblSessionByUIdAndPubAddr(sess_mb_uid, sess_pub_addr);
+        }
+        public Boolean DeleteSessionsByUIdAndPubAddrExcept(string sess_mb_uid, string sess_pub_addr, string except_sess_id)
+        {
+            return tblSession.DeleteTblSessionsByUIdAndPubAddrExcept(sess_mb_uid, sess_pub_addr, except_sess_id);
+        }
         public CLm2Session GetSessionByGame(int iServerNo, string strCharName)
         {
             return tblSession.GetTblSessionByGame(iServerNo, strCharName);

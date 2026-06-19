@@ -295,6 +295,72 @@ namespace Mir2Admin.Models
                 return null;
             }
         }
+        public CLm2Session GetTblSessionByUIdAndPubAddr(string sess_mb_uid, string sess_pub_addr)
+        {
+            if (string.IsNullOrEmpty(sess_mb_uid) || string.IsNullOrEmpty(sess_pub_addr))
+                return null;
+
+            conn = CutilsMsSql.GetSqlConn();
+            conn.Open();
+            string sql = "SELECT * FROM " + table_name + "_session";
+            sql += " JOIN " + table_name + "_member ON " +
+                table_name + "_member.mb_uid=" + table_name + "_session.sess_mb_uid ";
+            sql += " WHERE sess_mb_uid=@sess_mb_uid AND sess_pub_addr=@sess_pub_addr";
+            sql += " ORDER BY sess_time_last DESC";
+            cmd = new SqlCommand(sql, conn);
+
+            try
+            {
+                cmd.Parameters.AddWithValue("@sess_mb_uid", sess_mb_uid);
+                cmd.Parameters.AddWithValue("@sess_pub_addr", sess_pub_addr);
+                sdr = cmd.ExecuteReader();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                string error_msg = ex.Message;
+            }
+
+            if (sdr != null && sdr.Read())
+            {
+                CLm2Session mSession = GetSessionBySQL(sdr);
+                if (conn != null) conn.Close();
+                return mSession;
+            }
+
+            if (conn != null) conn.Close();
+            return null;
+        }
+        public Boolean DeleteTblSessionsByUIdAndPubAddrExcept(string sess_mb_uid, string sess_pub_addr, string except_sess_id)
+        {
+            if (string.IsNullOrEmpty(sess_mb_uid) || string.IsNullOrEmpty(sess_pub_addr))
+                return false;
+
+            conn = CutilsMsSql.GetSqlConn();
+            conn.Open();
+
+            string sql = "DELETE FROM " + table_name + "_session";
+            sql += " WHERE sess_mb_uid=@sess_mb_uid AND sess_pub_addr=@sess_pub_addr";
+            sql += " AND sess_id<>@except_sess_id";
+
+            cmd = new SqlCommand(sql, conn);
+            try
+            {
+                cmd.Parameters.AddWithValue("@sess_mb_uid", sess_mb_uid);
+                cmd.Parameters.AddWithValue("@sess_pub_addr", sess_pub_addr);
+                cmd.Parameters.AddWithValue("@except_sess_id", except_sess_id ?? "");
+                cmd.ExecuteNonQuery();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                string error_msg = ex.Message;
+                return false;
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
+            return true;
+        }
         public List<CLm2Session> GetTblSessionList(string servName, string characName)
         {
             conn = CutilsMsSql.GetSqlConn();
