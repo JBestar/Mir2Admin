@@ -32,6 +32,7 @@ namespace Mir2Admin.Models
             mSession.sess_game_server = sdr["sess_game_server"].ToString();
             mSession.sess_game_serverno = (int)sdr["sess_game_serverno"];
             mSession.sess_game_name = sdr["sess_game_name"].ToString();
+            mSession.sess_game_id = sdr["sess_game_id"] == DBNull.Value ? null : sdr["sess_game_id"].ToString();
             mSession.sess_game_level = (int)sdr["sess_game_level"];  //== 1 ? true : false;
             mSession.sess_game_locale = sdr["sess_game_locale"].ToString();
             
@@ -84,7 +85,7 @@ namespace Mir2Admin.Models
 
             string sql = "INSERT INTO " + table_name + "_session (";
             sql += " sess_id, sess_time_begin, sess_time_last, sess_hostname,";
-            sql += " sess_browser, sess_pub_addr, sess_emp_fid, sess_mb_uid,";
+            sql += " sess_browser, sess_pub_addr, sess_emp_fid, sess_mb_uid, sess_game_id,";
             sql += " sess_auto_running, sess_game_server, sess_game_serverno, sess_game_name, sess_game_level,";
             sql += " sess_game_locale, sess_game_money1, sess_game_money2, sess_game_money3, ";
             sql += " sess_game_money4, sess_game_money5, ";
@@ -92,7 +93,7 @@ namespace Mir2Admin.Models
             sql += " sess_client_command, sess_client_memo";
             sql += ") VALUES (";
             sql += " @sess_id, @sess_time_begin, @sess_time_last, @sess_hostname,";
-            sql += " @sess_browser, @sess_pub_addr, @sess_emp_fid, @sess_mb_uid,";
+            sql += " @sess_browser, @sess_pub_addr, @sess_emp_fid, @sess_mb_uid, @sess_game_id,";
             sql += " @sess_auto_running, @sess_game_server, @sess_game_serverno, @sess_game_name, @sess_game_level,";
             sql += " @sess_game_locale, @sess_game_money1, @sess_game_money2, @sess_game_money3, ";
             sql += " @sess_game_money4, @sess_game_money5, ";
@@ -111,6 +112,7 @@ namespace Mir2Admin.Models
                 cmd.Parameters.AddWithValue("@sess_pub_addr", mSession.sess_pub_addr);
                 cmd.Parameters.AddWithValue("@sess_emp_fid", mSession.sess_emp_fid);
                 cmd.Parameters.AddWithValue("@sess_mb_uid", mSession.sess_mb_uid);
+                cmd.Parameters.AddWithValue("@sess_game_id", mSession.sess_game_id == null ? (object)DBNull.Value : mSession.sess_game_id);
                 cmd.Parameters.AddWithValue("@sess_auto_running", mSession.sess_auto_running);
                 cmd.Parameters.AddWithValue("@sess_game_server", mSession.sess_game_server);
                 cmd.Parameters.AddWithValue("@sess_game_serverno", mSession.sess_game_serverno);
@@ -151,6 +153,7 @@ namespace Mir2Admin.Models
             sql += " sess_hostname=@sess_hostname,";
             sql += " sess_browser=@sess_browser,";
             sql += " sess_pub_addr=@sess_pub_addr,";
+            sql += " sess_game_id=@sess_game_id,";
             sql += " sess_auto_running=@sess_auto_running,";
             sql += " sess_game_server=@sess_game_server,";
             sql += " sess_game_serverno=@sess_game_serverno,";
@@ -177,6 +180,7 @@ namespace Mir2Admin.Models
                 cmd.Parameters.AddWithValue("@sess_hostname", mSession.sess_hostname);
                 cmd.Parameters.AddWithValue("@sess_browser", mSession.sess_browser);
                 cmd.Parameters.AddWithValue("@sess_pub_addr", mSession.sess_pub_addr);
+                cmd.Parameters.AddWithValue("@sess_game_id", mSession.sess_game_id == null ? (object)DBNull.Value : mSession.sess_game_id);
                 cmd.Parameters.AddWithValue("@sess_mb_uid", mSession.sess_mb_uid);
                 cmd.Parameters.AddWithValue("@sess_auto_running", mSession.sess_auto_running);
                 cmd.Parameters.AddWithValue("@sess_game_server", mSession.sess_game_server);
@@ -218,6 +222,36 @@ namespace Mir2Admin.Models
             try
             {
                 cmd.Parameters.AddWithValue("@sess_id", sess_id);
+                cmd.ExecuteNonQuery();
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                string error_msg = ex.Message;
+                return false;
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
+            return true;
+        }
+        public Boolean DeleteTblSessionsByPubAddrMbUidGameId(string pubAddr, string mbUid, string gameId)
+        {
+            if (string.IsNullOrEmpty(pubAddr) || string.IsNullOrEmpty(mbUid) || string.IsNullOrEmpty(gameId))
+                return false;
+
+            conn = CutilsMsSql.GetSqlConn();
+            conn.Open();
+
+            string sql = "DELETE FROM " + table_name + "_session";
+            sql += " WHERE sess_pub_addr=@pub_addr AND sess_mb_uid=@mb_uid AND sess_game_id=@game_id";
+
+            cmd = new SqlCommand(sql, conn);
+            try
+            {
+                cmd.Parameters.AddWithValue("@pub_addr", pubAddr);
+                cmd.Parameters.AddWithValue("@mb_uid", mbUid);
+                cmd.Parameters.AddWithValue("@game_id", gameId);
                 cmd.ExecuteNonQuery();
             }
             catch (System.Data.SqlClient.SqlException ex)
@@ -294,72 +328,6 @@ namespace Mir2Admin.Models
                 if (conn != null) conn.Close();
                 return null;
             }
-        }
-        public CLm2Session GetTblSessionByUIdAndPubAddr(string sess_mb_uid, string sess_pub_addr)
-        {
-            if (string.IsNullOrEmpty(sess_mb_uid) || string.IsNullOrEmpty(sess_pub_addr))
-                return null;
-
-            conn = CutilsMsSql.GetSqlConn();
-            conn.Open();
-            string sql = "SELECT * FROM " + table_name + "_session";
-            sql += " JOIN " + table_name + "_member ON " +
-                table_name + "_member.mb_uid=" + table_name + "_session.sess_mb_uid ";
-            sql += " WHERE sess_mb_uid=@sess_mb_uid AND sess_pub_addr=@sess_pub_addr";
-            sql += " ORDER BY sess_time_last DESC";
-            cmd = new SqlCommand(sql, conn);
-
-            try
-            {
-                cmd.Parameters.AddWithValue("@sess_mb_uid", sess_mb_uid);
-                cmd.Parameters.AddWithValue("@sess_pub_addr", sess_pub_addr);
-                sdr = cmd.ExecuteReader();
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                string error_msg = ex.Message;
-            }
-
-            if (sdr != null && sdr.Read())
-            {
-                CLm2Session mSession = GetSessionBySQL(sdr);
-                if (conn != null) conn.Close();
-                return mSession;
-            }
-
-            if (conn != null) conn.Close();
-            return null;
-        }
-        public Boolean DeleteTblSessionsByUIdAndPubAddrExcept(string sess_mb_uid, string sess_pub_addr, string except_sess_id)
-        {
-            if (string.IsNullOrEmpty(sess_mb_uid) || string.IsNullOrEmpty(sess_pub_addr))
-                return false;
-
-            conn = CutilsMsSql.GetSqlConn();
-            conn.Open();
-
-            string sql = "DELETE FROM " + table_name + "_session";
-            sql += " WHERE sess_mb_uid=@sess_mb_uid AND sess_pub_addr=@sess_pub_addr";
-            sql += " AND sess_id<>@except_sess_id";
-
-            cmd = new SqlCommand(sql, conn);
-            try
-            {
-                cmd.Parameters.AddWithValue("@sess_mb_uid", sess_mb_uid);
-                cmd.Parameters.AddWithValue("@sess_pub_addr", sess_pub_addr);
-                cmd.Parameters.AddWithValue("@except_sess_id", except_sess_id ?? "");
-                cmd.ExecuteNonQuery();
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                string error_msg = ex.Message;
-                return false;
-            }
-            finally
-            {
-                if (conn != null) conn.Close();
-            }
-            return true;
         }
         public List<CLm2Session> GetTblSessionList(string servName, string characName)
         {

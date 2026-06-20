@@ -33,6 +33,8 @@ namespace Mir2Admin.Mir2
                 if (CUtilsNetwork.TryGetIpv4ThreeOctetPrefix(strConipForStore, out unusedPrefix))
                     loginRecordedIp = strConipForStore.Trim();
 
+                string strGameId = Request["gameid"] != null ? Request["gameid"].ToString() : null;
+
                 iLoginResult = curMember.ActionLogin(
                     Request["username"].ToString(),
                     Request["password"].ToString(),
@@ -40,7 +42,8 @@ namespace Mir2Admin.Mir2
                     "",
                     "",
                     loginRecordedIp,
-                    strForce);
+                    strForce,
+                    strGameId);
             }
             
             if (iLoginResult == 1)

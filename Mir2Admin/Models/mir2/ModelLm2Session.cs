@@ -20,6 +20,7 @@ namespace Mir2Admin.Models
         public string sess_game_server;
         public int sess_game_serverno;
         public string sess_game_name;
+        public string sess_game_id;
         public int sess_game_level;
         public string sess_game_locale;
 
@@ -55,6 +56,7 @@ namespace Mir2Admin.Models
             sess_game_server = "";
             sess_game_serverno = 0;
             sess_game_name = "";
+            sess_game_id = null;
             sess_game_level = 0;
             sess_game_locale = "";
 
@@ -96,14 +98,6 @@ namespace Mir2Admin.Models
         {
             return tblSession.GetTblSessionByUId(sess_mb_uid);
         }
-        public CLm2Session GetSessionByUIdAndPubAddr(string sess_mb_uid, string sess_pub_addr)
-        {
-            return tblSession.GetTblSessionByUIdAndPubAddr(sess_mb_uid, sess_pub_addr);
-        }
-        public Boolean DeleteSessionsByUIdAndPubAddrExcept(string sess_mb_uid, string sess_pub_addr, string except_sess_id)
-        {
-            return tblSession.DeleteTblSessionsByUIdAndPubAddrExcept(sess_mb_uid, sess_pub_addr, except_sess_id);
-        }
         public CLm2Session GetSessionByGame(int iServerNo, string strCharName)
         {
             return tblSession.GetTblSessionByGame(iServerNo, strCharName);
@@ -120,6 +114,11 @@ namespace Mir2Admin.Models
         public int CountSessionsByPubAddrPrefix(string threeOctetPrefixEndsWithDot)
         {
             return tblSession.CountTblSessionByPubAddrPrefix(threeOctetPrefixEndsWithDot);
+        }
+
+        public Boolean DeleteSessionsByPubAddrMbUidGameId(string pubAddr, string mbUid, string gameId)
+        {
+            return tblSession.DeleteTblSessionsByPubAddrMbUidGameId(pubAddr, mbUid, gameId);
         }
 
     }

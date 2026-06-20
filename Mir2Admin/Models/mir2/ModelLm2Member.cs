@@ -88,7 +88,7 @@ namespace Mir2Admin.Models
         }
         // 로그인액션
         public int ActionLogin(string mb_uid, string mb_pwd,
-            string sess_id, string hostname, string browser, string ipaddress, string force = "")
+            string sess_id, string hostname, string browser, string ipaddress, string force = "", string gameid = null)
         {
             // result=0: 아이디틀림
             // result=1: 정상
@@ -113,47 +113,40 @@ namespace Mir2Admin.Models
             if (mEmployee == null) return 4;
             if (mEmployee.emp_state_active == false || mEmployee.emp_b_app_01_lm2 == false) return 4;
 
-            CLm2Session sessionHelper = new CLm2Session();
-            CLm2Session existingSession = sessionHelper.GetSessionByUIdAndPubAddr(mb_uid, ipaddress);
-            bool sessionSaved = false;
-
-            if (existingSession != null)
+            mSession = new CLm2Session();
+            mSession = mSession.GetSessionByUId(mb_uid);
+            if (mSession != null)
             {
-                string oldSessId = existingSession.sess_id;
-                existingSession.sess_time_last = DateTime.Now;
-                existingSession.sess_hostname = hostname;
-                existingSession.sess_browser = browser;
-                existingSession.sess_emp_fid = tmpMember.mb_emp_fid;
-
-                if (oldSessId != sess_id)
-                {
-                    existingSession.DeleteSession(oldSessId);
-                    existingSession.sess_id = sess_id;
-                    sessionSaved = existingSession.ResigterMemberSession();
-                }
-                else
-                {
-                    sessionSaved = existingSession.UpdateMemberSession();
-                }
-
-                if (sessionSaved)
-                    sessionHelper.DeleteSessionsByUIdAndPubAddrExcept(mb_uid, ipaddress, sess_id);
+//                if (!mSession.sess_pub_addr.Equals(ipaddress))
+//                     return 5;
+//                 else
+//                 {
+//                     mSession.DeleteSession(mSession.sess_id);
+//                 }
+                
             }
-            else
+            string normalizedGameId = null;
+            if (!string.IsNullOrWhiteSpace(gameid))
+                normalizedGameId = gameid.Trim();
+
+            if (normalizedGameId != null)
             {
-                mSession = new CLm2Session();
-                mSession.sess_id = sess_id;
-                mSession.sess_time_begin = DateTime.Now;
-                mSession.sess_time_last = DateTime.Now;
-                mSession.sess_hostname = hostname;
-                mSession.sess_browser = browser;
-                mSession.sess_pub_addr = ipaddress;
-                mSession.sess_mb_uid = mb_uid;
-                mSession.sess_emp_fid = tmpMember.mb_emp_fid;
-                sessionSaved = mSession.ResigterMemberSession();
+                CLm2Session dupSession = new CLm2Session();
+                dupSession.DeleteSessionsByPubAddrMbUidGameId(ipaddress, mb_uid, normalizedGameId);
             }
 
-            if (sessionSaved)
+            mSession = new CLm2Session();
+            mSession.sess_id = sess_id;
+            mSession.sess_time_begin = DateTime.Now;
+            mSession.sess_time_last = DateTime.Now;
+            mSession.sess_hostname = hostname;
+            mSession.sess_browser = browser;
+            mSession.sess_pub_addr = ipaddress;
+            mSession.sess_mb_uid = mb_uid;
+            mSession.sess_emp_fid = tmpMember.mb_emp_fid;
+            mSession.sess_game_id = normalizedGameId;
+
+            if (mSession.ResigterMemberSession())
             {
                 tmpMember.mb_time_last = DateTime.Now;
                 tmpMember.UpdateLastTimeMember();
